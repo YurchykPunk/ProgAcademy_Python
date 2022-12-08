@@ -13,7 +13,10 @@ class Pieceofmeat:
         self.surname = surname
         self.sex = sex
         self.birth_year = birth_year
-        
+    
+    def details(self):
+        return self.name, self.surname, self.sex, self.birth_year
+    
     def __str__(self):
         return f'Mr(s) {self.surname}, {self.name}'
         
@@ -26,6 +29,8 @@ class Student(Pieceofmeat):
     def studinfo_short(self):
         return f'->{self.surname} {self.name}\t{self.id_card}'
 
+    def details(self):
+        return self.id_card, self.average_mark, self.name, self.surname, self.sex, self.birth_year
 
     def __str__(self):
         return f'Student {self.surname}/t{self.id_card}'
@@ -73,7 +78,6 @@ class Studygroup:
             check_gen.append(f'{self.group[idx].studinfo_short()}') if x.surname == sur else False
         res = '\n'.join(check_gen)
         return res and f'Following students were found:\n{res}' or 'No students found'
-
     
     def __str__(self):
         return '\n'.join(list(map(lambda x: f'{x.surname} {x.name[0]}.', self.group)))
@@ -86,3 +90,4 @@ it_gen.del_student(student_list[3])
 
 print(it_gen.find_student('Potter'))
 print(it_gen)
+print(student_list[3].details())
