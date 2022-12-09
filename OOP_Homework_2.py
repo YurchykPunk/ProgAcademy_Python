@@ -59,14 +59,14 @@ class Studygroup:
         if len(self.group) < self.STUDLIMIT and not student.id_card in list(map(lambda x: x.id_card, self.group)):
             self.group.append(student)
         else:
-            return f'Failed'
+            return False
         return self
     
     def del_student(self, student):
         if student.id_card in list(map(lambda x: x.id_card, self.group)):
             self.group.remove(student)
         else:
-            return f'Failed'
+            return False
         return self
     
     def groupinfo(self):
