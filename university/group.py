@@ -19,8 +19,8 @@ class Studygroup:
             raise excepts.DuplicateError(student.title_only(), self.groupname)
         
         self.group.append(student)
-        log_mod.logger.info(f'Student "{student.surname} {student.name[0]}." succesfully added to group {self.groupname}')
-
+        log_mod.logger.info(f'Modulename:"{__class__.__name__}".' \
+            f'Student "{student.surname} {student.name[0]}:" succesfully added to group {self.groupname}')
         return self
     
     def del_student(self, student):
