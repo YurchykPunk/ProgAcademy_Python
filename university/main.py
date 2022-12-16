@@ -24,20 +24,23 @@ for x in human_creator:
     x.sex = h_names.index(x.name) > 3 and 'F' or 'M'
 
 
-#adds students to the group
+#creates list of Students
 student_list = []
 for index, x in enumerate(human_creator):
     student_unit = student.Student('Hogwarts', f'2022-12-523/{index}', random.randint(55,100),x.name, x.surname, x.sex, x.birth_year)
     student_list.append(student_unit)
 
-
+#creates group It-Gen
 it_gen = group.Studygroup('It-Gen group')
-for x in range(8):
-    it_gen.add_student(student_list[x])
-it_gen.del_student(student_list[3])
 
-#it_gen.add_student(student_list[2])
-
+try:
+    for x in range(8):
+        it_gen.add_student(student_list[x])
+    it_gen.del_student(student_list[3])
+    it_gen.add_student(student_list[2])
+except Exception as err:
+    print(err)
+    
 print(it_gen.find_student('Potter'))
 print(it_gen)
 print(student_list[3].details())
