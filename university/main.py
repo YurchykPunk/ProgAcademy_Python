@@ -9,22 +9,26 @@ import random
 import meatpiece
 import student
 import group
+import log_mod
 
-        
+
+#creates list of hoomans :)
 h_names = ['George','Harry','Ronald','Seamus','Rose','Luna','Angelina']
 q_n = len(h_names)
 h_surnames = ['Weasley','Potter','Lovegood','Finnigan','Wood','Creevey']
 q_s = len(h_surnames)
 human_creator = [meatpiece.Pieceofmeat(h_names[random.randint(0,q_n-1)],h_surnames[random.randint(0,q_s-1)],'',random.randint(1994,1998)) for x in range(50)]
+
 #sex corrector
 for x in human_creator:
     x.sex = h_names.index(x.name) > 3 and 'F' or 'M'
 
+
+#adds students to the group
 student_list = []
 for index, x in enumerate(human_creator):
     student_unit = student.Student('Hogwarts', f'2022-12-523/{index}', random.randint(55,100),x.name, x.surname, x.sex, x.birth_year)
     student_list.append(student_unit)
-
 
 
 it_gen = group.Studygroup('It-Gen group')
@@ -32,7 +36,7 @@ for x in range(8):
     it_gen.add_student(student_list[x])
 it_gen.del_student(student_list[3])
 
-it_gen.add_student(student_list[2])
+#it_gen.add_student(student_list[2])
 
 print(it_gen.find_student('Potter'))
 print(it_gen)
