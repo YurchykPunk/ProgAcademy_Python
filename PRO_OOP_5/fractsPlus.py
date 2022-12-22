@@ -61,7 +61,7 @@ af = Trulyfraction(17,42)
 bf = Trulyfraction(9,42)
 cf = Trulyfraction(20, 40)
 
-print(af=bf)
+print(af==bf)
 print(af+bf)
 print(af-bf)
 print(af*bf)
