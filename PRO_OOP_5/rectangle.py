@@ -16,7 +16,9 @@ class UnrealRectangleErr(Exception):
 
 class Rectangle:
     def __init__(self, width, lenght):
-                
+        if not isinstance(width, (int, float)) or not isinstance(lenght, (int, float)):
+            raise TypeError('Definitely the dimensions should be comprised from numbers!')        
+        
         self.width = width
         self.lenght = lenght
         self.area = self.width * self.lenght
