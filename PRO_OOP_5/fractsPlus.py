@@ -4,10 +4,10 @@
 
 class Trulyfraction:
     def __init__(self, numerator, denominator=1):
+        if abs(denominator) < abs(numerator):
+            raise ValueError
         self.numerator = numerator
         self.denominator = denominator
-        if abs(self.denominator) < abs(self.numerator):
-            raise ValueError
         if self.numerator * self.denominator < 0:
             self.numerator = -abs(self.numerator)
             self.denominator = abs(self.denominator)
