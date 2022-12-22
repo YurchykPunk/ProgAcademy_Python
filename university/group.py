@@ -26,9 +26,9 @@ class Studygroup:
     def del_student(self, student):
         if student.id_card in list(map(lambda x: x.id_card, self.group)):
             self.group.remove(student)
+            return self
         else:
             return False
-        return self
     
     def groupinfo(self):
         return '\n'.join(list(map(lambda x: f'{x.surname} {x.name[0]}. ID Card {x.id_card}. Average mark: {x.average_mark}', self.group)))
