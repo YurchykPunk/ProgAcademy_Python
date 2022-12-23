@@ -1,21 +1,56 @@
+import order_itera
+
 class Order:
+
     def __init__(self, client):
         self.client = client
-        self.basket = {}
+        self.basket_products = []
+        self.basket_qties = []
 
     def add_to_basket(self, product, quantity=1):
-        self.basket[product] = quantity
+        if product in self.basket_products:
+            self.basket_qties[self.basket_products.index(product)] += quantity
+        else:
+            self.basket_products.append(product)
+            self.basket_qties.append(quantity)
         return self
 
     def checkout_sum(self):
-        t_amount = sum(x.price * self.basket[x] for x in self.basket)
+        t_amount = sum(x.price * self.basket_qties[index] for index, x in enumerate(self.basket_products))
         return t_amount
 
+    def __len__(self):
+        return len(self.basket_products)
+    
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            if index.start < 0 or index.stop > len(self.basket_products):
+                raise IndexError
+            else:
+                result = []
+                start = 0 if index.start == None else index.start
+                stop = len(self.basket_products)-1 if index.stop == None else index.stop
+                step = 1 if index.step == None else index.step
+                for x in range(start, stop, step):
+                    result.append(self.basket_products[x])
+                return result
+            
+        if isinstance(index, int):
+            if index < len(self.basket_products):
+                return self.basket_products[index]
+            else:
+                raise IndexError
+        
+        raise TypeError
+
+    def __iter__(self):
+        return order_itera.OrderIterator([self.basket_products, self.basket_qties])
+
+
     def __str__(self):
-        qties_basket = self.basket.values()
-        cheque_header = f'{"-"*35}\n{self.client}\n{"-"*35}\n'
+        cheque_header = f'{"*"*35}\n{self.client}\n{"-"*35}\n'
         cheque = cheque_header + ''.join(map(
             lambda z: f'{z[0]} x {z[1]}\t= \t{z[0].price * z[1]}\n',\
-            zip(self.basket, qties_basket)))
+            zip(self.basket_products, self.basket_qties)))
 
-        return f'{cheque}\n{"-"*35}\nTotal: \t{self.checkout_sum()}\n{"-"*35}'
+        return f'{cheque}\n{"-"*35}\nTotal:\t\t{self.checkout_sum():.2f} UAH\nVAT included:\t{self.checkout_sum()/6:.2f} UAH\n{"-"*35}'

@@ -21,3 +21,6 @@ consumer_3.get_loyalty_card(58, 'B213412')
 order_1 = order.Order(consumer_3)
 order_1.add_to_basket(product_1, 1).add_to_basket(product_3, 2).add_to_basket(product_2, 15)
 print(order_1)
+print(len(order_1))
+for x in order_1:
+    print(x)
