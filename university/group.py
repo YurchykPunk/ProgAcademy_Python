@@ -39,6 +39,9 @@ class Studygroup:
             check_gen.append(f'{self.group[idx].studinfo_short()}') if x.surname == sur else False
         res = '\n'.join(check_gen)
         return res and f'Following students were found:\n{res}' or False
+
+    def __iter__(self):
+        return groupiter.GroupIterative(self.group)
     
     def __str__(self):
         return '\n'.join(list(map(lambda x: f'{x.surname} {x.name[0]}.', self.group)))
