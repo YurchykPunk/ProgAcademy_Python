@@ -4,7 +4,7 @@
 
 class Trulyfraction:
     def __init__(self, numerator, denominator=1):
-        if abs(denominator) < abs(numerator):
+        if abs(denominator) <= abs(numerator):
             raise ValueError
         self.numerator = numerator
         self.denominator = denominator
