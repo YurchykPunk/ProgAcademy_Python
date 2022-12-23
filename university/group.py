@@ -1,6 +1,7 @@
 from student import Student
 import excepts
 import log_mod
+import groupiter
 
 class Studygroup:
     def __init__(self, groupname, studlimit=10):
