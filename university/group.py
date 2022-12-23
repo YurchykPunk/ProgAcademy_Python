@@ -44,5 +44,23 @@ class Studygroup:
     def __iter__(self):
         return groupiter.GroupIterative(self.group)
     
+    def __len__(self):
+        return len(self.group)
+
+    def __getitem__(self, index):
+        if not isinstance(index, (slice, int)):
+            raise TypeError
+        elif isinstance(index, int) and index < len(self.group):
+            return self.group[index]
+        elif True:
+            start = index.start or 0
+            stop = index.stop or len(self.group)
+            step = index.step or 1
+            result = []
+            for x in range(start, stop, step):
+                result.append(self.group[x])
+            return result
+        raise IndexError
+    
     def __str__(self):
         return '\n'.join(list(map(lambda x: f'{x.surname} {x.name[0]}.', self.group)))
