@@ -23,25 +23,19 @@ class Order:
         return len(self.basket_products)
     
     def __getitem__(self, index):
-        if isinstance(index, slice):
-            if index.start < 0 or index.stop > len(self.basket_products):
-                raise IndexError
-            else:
-                result = []
-                start = 0 if index.start == None else index.start
-                stop = len(self.basket_products)-1 if index.stop == None else index.stop
-                step = 1 if index.step == None else index.step
-                for x in range(start, stop, step):
-                    result.append(self.basket_products[x])
-                return result
-            
-        if isinstance(index, int):
-            if index < len(self.basket_products):
-                return self.basket_products[index]
-            else:
-                raise IndexError
-        
-        raise TypeError
+        if not isinstance(index, (slice, int)):
+            raise TypeError
+        elif isinstance(index, int) and index < len(self.basket_products):
+            return self.basket_products[index]
+        elif index.start >= 0 and index.stop <= len(self.basket_products):
+            result = []
+            start = 0 if index.start == None else index.start
+            stop = len(self.basket_products)-1 if index.stop == None else index.stop
+            step = 1 if index.step == None else index.step
+            for x in range(start, stop, step):
+                result.append(self.basket_products[x])
+            return result
+        raise IndexError
 
     def __iter__(self):
         return order_itera.OrderIterator([self.basket_products, self.basket_qties])
