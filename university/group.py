@@ -52,7 +52,7 @@ class Studygroup:
             raise TypeError
         elif isinstance(index, int) and index < len(self.group):
             return self.group[index]
-        elif True:
+        elif isinstance(index, slice):
             start = index.start or 0
             stop = index.stop or len(self.group)
             step = index.step or 1
