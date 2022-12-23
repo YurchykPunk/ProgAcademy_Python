@@ -44,3 +44,6 @@ except Exception as err:
 print(it_gen.find_student('Potter'))
 print(it_gen)
 print(student_list[3].details())
+
+for x in it_gen:
+    print(x)
