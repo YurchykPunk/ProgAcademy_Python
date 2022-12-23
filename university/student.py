@@ -15,4 +15,4 @@ class Student(Pieceofmeat):
         return self.id_card, self.average_mark, self.name, self.surname, self.sex, self.birth_year
 
     def __str__(self):
-        return f'Student {self.surname}/t{self.id_card}'
+        return f'Student {self.surname}\t{self.id_card}'
