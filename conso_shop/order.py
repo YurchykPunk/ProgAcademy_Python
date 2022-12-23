@@ -29,7 +29,7 @@ class Order:
             return self.basket_products[index]
         elif isinstance(index, slice):
             start = index.start or 0
-            stop = index.stop or len(self.basket_products)-1
+            stop = index.stop or len(self.basket_products)
             step = index.step or 1
             result = []
             for x in range(start, stop, step):
