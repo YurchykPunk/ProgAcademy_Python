@@ -22,7 +22,7 @@ def suber(a, b):
 summer(1,1)
 suber(9,1)
 suber(2,1)
-print(c)
+print(suber.c)
 
 
 #===============================================
