@@ -4,16 +4,13 @@
 #1) Створіть декоратор, який підраховуватиме, скільки разів була
 #викликана функція, що декорується.
 
-
-c = {}
-
 def counter(victim):
-    c[victim.__name__] = 0
     def inner(*args, **kwargs):
-        c[victim.__name__] += 1
+        inner.c += 1
         return victim(*args, **kwargs)
+    inner.c = 0
     return inner
-        
+
 @counter
 def summer(a, b):
     return a + b
