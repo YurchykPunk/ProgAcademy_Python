@@ -49,13 +49,13 @@ def is_valid_email(e_mail):
 post = input('email: ')
 print(is_valid_email(post))
 
-#=================================Alternative==simplified========================
+#=================================Alternative==extended========================
 
 def is_valid_email_s(e_mail):
     e_mail = e_mail.lower()
     if re.split(r'@', e_mail)[0].count('-') > 1:
         return False
-    e_mail_pattern = r'^[0-9a-z][0-9a-z_-]*@[a-z-]+\.[a-z]{2,}$'
+    e_mail_pattern = r'^[0-9a-z][0-9a-z_-]*@[a-z]+(-[a-z]+)*(\.[a-z]{2,4})*\.[a-z]{2,}$'
     return re.search(e_mail_pattern, e_mail) and True or False
 
 post = input('email: ')
