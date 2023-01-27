@@ -51,9 +51,9 @@ print(is_valid_email(post))
 
 #=================================Alternative==simplified========================
 
-def is_valid_email(e_mail):
+def is_valid_email_s(e_mail):
     e_mail = e_mail.lower()
-    if e_mail.count('-') > 1:
+    if re.split(r'@')[0].count('-') > 1:
         return False
     e_mail_pattern = r'^[0-9a-z][0-9a-z_-]*@[a-z]+\.[a-z]{2,}$'
     return re.search(e_mail_pattern, e_mail) and True or False
