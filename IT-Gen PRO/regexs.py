@@ -20,7 +20,7 @@ import re
 
 pat = r'Rb+r'
 text = input('text: ')
-print(re.search(pat, text) and True or False)
+print(re.findall(pat, text) or False)
 
 #================================================================================
 #=============================TASK 2=============================================
