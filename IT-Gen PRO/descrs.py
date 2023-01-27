@@ -17,7 +17,7 @@ class Manager:
         return instance_self.__dict__.get(self.naming)
 
 
-    def __delete__(self, instance_self, value):
+    def __delete__(self, instance_self):
         raise ValueError('read-only attribute')
 
 
