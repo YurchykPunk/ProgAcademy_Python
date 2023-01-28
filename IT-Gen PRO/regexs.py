@@ -39,23 +39,13 @@ print(is_valid_creditcard(ccard))
 #================================================================================
 #=============================TASK 3=============================================
 #================================================================================
-
-def is_valid_email(e_mail):
-    if e_mail.count('-') > 1:
-        return False
-    e_mail_pattern = r'^[0-9A-Za-z][0-9A-Za-z_-]*@[A-Za-z]+\.[A-Za-z]{2,}$'
-    return re.search(e_mail_pattern, e_mail) and True or False
-
-post = input('email: ')
-print(is_valid_email(post))
-
-#=================================Alternative==extended========================
+#=================================Alternative==extended==========================
 
 def is_valid_email_s(e_mail):
     e_mail = e_mail.lower()
     if re.split(r'@', e_mail)[0].count('-') > 1:
         return False
-    e_mail_pattern = r'^[0-9a-z][0-9a-z_-]*@[a-z]+(-[a-z]+)*(\.[a-z]{2,4})*\.[a-z]{2,}$'
+    e_mail_pattern = r'^[0-9a-z](-?[0-9a-z_])+@[a-z]+(\.[a-z0-9]{2,8})+$'
     return re.search(e_mail_pattern, e_mail) and True or False
 
 post = input('email: ')
