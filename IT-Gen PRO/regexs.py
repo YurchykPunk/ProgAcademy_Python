@@ -66,7 +66,7 @@ print(is_valid_email(post))
 #================================================================================
 
 def is_valid_login(login):
-    login_pattern = r'^([0-9]|[A-Za-z]){2,10}$'
+    login_pattern = r'^([0-9A-Za-z]){2,10}$'
     return re.search(login_pattern, login) and True or False
 
 login = input('login: ')
